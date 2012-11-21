@@ -46,7 +46,7 @@ def caesar_multiply(string,mod):
         newstring += alphabet[crypt[alphabet.index(string[low:up])]]
         low +=1
         up +=1
-        l +=1
+
     print "\n Here is the coded message: " + newstring 
     print
     
@@ -69,13 +69,13 @@ def caesar_decrypt(mod):
         crypt_alphabet.append(cipherletter)
                                 
         low += 1
-        n+=1
         
     print
-    print "Here is your key."
-    print alphabet
-    print crypt_alphabet
-
+    print "Here is your key. \n"
+    print "Alphabet | Cipher Alphabet" 
+    for n in range(0,26):
+        print "  ", alphabet[n], "    |   ", crypt_alphabet[n]
+        
     again()
     
 def caesar_multiply_decrypt(mod):
@@ -85,6 +85,7 @@ def caesar_multiply_decrypt(mod):
 
     for i in range(0,26):
         crypt[i] = int((alphabet_num[i] * mod) % 26)
+
     low = 0
     
     for n in range(0,26):
@@ -96,8 +97,11 @@ def caesar_multiply_decrypt(mod):
         
     print
     print "Here is your key."
-    print alphabet
-    print crypt_alphabet
+    for n in range(0,26):
+        print "  ", alphabet[n], "    |   ", crypt_alphabet[n]
+     
+##    print alphabet
+##    print crypt_alphabet
 
     again()
 
@@ -125,7 +129,7 @@ def start():
             mod = int(mod)
             caesar_multiply(string,mod)
     elif mode == 2:
-        mode = int(raw_input('What decryption would you like to use? \n 1 Caesar \n 2 Caesar Multiply \n \n    : '))
+        mode = int(raw_input('What decryption would you like to use? \n 1 Caesar \n 2 Caesar Multiply \n    : '))
         if mode == 1:
             mod = raw_input("What Caesar shift number would you like to use?  \n    : ")
             if mod.isdigit():
