@@ -6,7 +6,7 @@ Goals:
 - Add a multiply Caesar shift encryption and decryption
 * Combine multiply and addition shifts
 * Add error checking
-* Add abilitiy to handle caps and spaces
+- Add abilitiy to handle caps and spaces
 ## - is completed 
 ## * is in progress
 
