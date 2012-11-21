@@ -1,7 +1,7 @@
 # Aaron Gunderson
 
 
-def caesar_encrypt(string,mod):
+def caesar_encrypt(plaintext,mod):
     alphabet_num = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
     crypt = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 
@@ -9,27 +9,26 @@ def caesar_encrypt(string,mod):
     for i in range(0,26):
         crypt[i] = (alphabet_num[i] + mod) % 26
 
-    upper = len(string)
+    upper = len(plaintext)
     newstring = ''
     low = 0
     up = 1
     
     for l in range(0, upper):
-        newstring += alphabet[crypt[alphabet.index(string[low:up])]]
+        if plaintext[low:up].isspace():
+            newstring += ' '
+        else:
+            newstring += alphabet[crypt[alphabet.index(plaintext[low:up])]]
         low +=1
         up +=1
-        l +=1
+        
         
     print "\n Here is the coded message: " + newstring 
     print
     
-    ##print alphabet[crypt[alphabet.index(string[0:1])]]
-    ##print alphabet[0:9]
-    ##print alphabet[0]
-
     again()
 
-def caesar_multiply(string,mod):
+def caesar_multiply(plaintext,mod):
     alphabet_num = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
     crypt = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 
@@ -37,13 +36,16 @@ def caesar_multiply(string,mod):
     for i in range(0,26):
         crypt[i] = (alphabet_num[i] * mod) % 26
 
-    upper = len(string)
+    upper = len(plaintext)
     newstring = ''
     low = 0
     up = 1
     
     for l in range(0, upper):
-        newstring += alphabet[crypt[alphabet.index(string[low:up])]]
+        if plaintext[low:up].isspace():
+            newstring += ' '
+        else:
+            newstring += alphabet[crypt[alphabet.index(plaintext[low:up])]]
         low +=1
         up +=1
 
@@ -78,7 +80,7 @@ def caesar_decrypt(mod):
         
     again()
     
-def caesar_multiply_decrypt(mod):
+def caesar_multiply_decrypt_key(mod):
     alphabet_num = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
     crypt = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
     crypt_alphabet = []
@@ -99,10 +101,7 @@ def caesar_multiply_decrypt(mod):
     print "Here is your key."
     for n in range(0,26):
         print "  ", alphabet[n], "    |   ", crypt_alphabet[n]
-     
-##    print alphabet
-##    print crypt_alphabet
-
+        
     again()
 
 def again():
@@ -115,19 +114,21 @@ def again():
         raw_input()
         
 def start():
-    mode = int(raw_input("What would you like to do? \n 1 Encrypt \n 2 Decrypt \n"))
+    mode = int(raw_input("What would you like to do? \n 1 Encrypt \n 2 Decrypt \n   :"))
     if mode == 1:
         mode = int(raw_input('What encryption would you like to use? \n 1 Caesar \n 2 Caesar Multiply \n    : '))
         if mode == 1:
-            string = raw_input("Enter a string: ")
+            plaintext = raw_input("Enter a plaintext: ")
+            plaintext = str.lower(plaintext)
             mod = raw_input("Enter the number you would like to shift by: ")
             mod = int(mod)
-            caesar_encrypt(string,mod)
+            caesar_encrypt(plaintext,mod)
         elif mode == 2:
-            string = raw_input("Enter a string: ")
+            plaintext = raw_input("Enter a plaintext: ")
+            plaintext = str.lower(plaintext)
             mod = raw_input("Enter the multiple you would like to shift by: \n (Note it must be a relative prime of 26)  \n    : ")
             mod = int(mod)
-            caesar_multiply(string,mod)
+            caesar_multiply(plaintext,mod)
     elif mode == 2:
         mode = int(raw_input('What decryption would you like to use? \n 1 Caesar \n 2 Caesar Multiply \n    : '))
         if mode == 1:
@@ -144,11 +145,11 @@ def start():
             mod = raw_input("What Caesar shift multiple would you like to use?  \n    : ")
             if mod.isdigit():
                 mod = int(mod)
-                caesar_multiply_decrypt(mod)
+                caesar_multiply_decrypt_key(mod)
             elif mod == "all":
                 for n in range(0,25):
                     mod = n
-                    caesar_multiply_decrypt(mod)
+                    caesar_multiply_decrypt_key(mod)
                     n+=1
             
     else:
@@ -159,4 +160,5 @@ alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
 
 print "Welcome to Cipher Systems... "
 print "Created by: Aaron Gunderson \n"
+
 start()
