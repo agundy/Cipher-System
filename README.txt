@@ -1,12 +1,16 @@
 This is an exploration of basic encryption techniques using Python.
 
-Goals:
+Goals: 
+- Started with a Caesars addition shift cipher 
+- Add a Decryption mode for shifts
+- Add a multiply Caesar shift encryption and decryption
+* Combine multiply and addition shifts
+* Add error checking
+* Add abilitiy to handle caps and spaces
+## - is completed 
+## * is in progress
 
-<<<<<<< HEAD:README.txt.txt
-Start with a Caesars cipher and build up some functionality to create 
-=======
-Start with a Caesars cipher and build up some functionality to create
->>>>>>> README UPDATE:README.txt
-slightly better ciphers.
+Status:
+Currently has a basic Caesar shift encryption and decryption mode as well as a Caesar Multiple encryption and decryption mode. 
 
 Any questions or suggestions. Email me at airgunde@gmail.com
