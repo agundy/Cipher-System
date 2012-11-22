@@ -163,9 +163,20 @@ def again():
         raw_input()
         
 def start():
-    mode = int(raw_input("What would you like to do? \n 1 Encrypt \n 2 Decrypt \n 3 Create a key \n   :"))
+    while True:
+        try:
+            mode = int(raw_input("What would you like to do? \n 1 Encrypt \n 2 Decrypt \n 3 Create a key \n   :"))
+            break
+        except mode != 1 or mode != 2 or mode != 3 or ValueError :
+            print "Enter a valid integer \n"
     if mode == 1:
-        mode = int(raw_input('What encryption would you like to use? \n 1 Caesar \n 2 Caesar Multiply \n 3 Caesar Key \n    : '))
+        while True:
+            try:
+                mode = int(raw_input('What encryption would you like to use? \n 1 Caesar \n 2 Caesar Multiply \n 3 Caesar Key \n    : '))
+                break
+            except mode != 1 or mode != 2 or mode != 3 or ValueError :
+                print "Enter a valid option \n"
+
         if mode == 1:
             plaintext = raw_input("Enter a plaintext: ")
             plaintext = str.lower(plaintext)
@@ -187,7 +198,12 @@ def start():
             mod = int(mod)
             caesar_multiply(plaintext,mod)
     elif mode == 2:
-        mode = int(raw_input('What decipher key would you like to use? \n 1 Caesar \n 2 Caesar Multiply \n    : '))
+        while True:
+            try:
+                mode = int(raw_input('What decipher key would you like to use? \n 1 Caesar \n 2 Caesar Multiply \n    : '))
+                break
+            except mode != 1 or mode != 2 or mode != 3 or ValueError :
+                print "Enter a valid option \n"
         if mode == 1:
             mod = raw_input("What Caesar shift number would you like to use?  \n    : ")
             cipher = raw_input("What is the ciphered message?")
@@ -200,7 +216,12 @@ def start():
                     caesar_decipher(cipher,mod)
                     n+=1
     elif mode == 3:
-        mode = int(raw_input('What decipher key would you like to make? \n 1 Caesar \n 2 Caesar Multiply \n    : '))
+        while True:
+            try:
+                mode = int(raw_input('What decipher key would you like to make? \n 1 Caesar \n 2 Caesar Multiply \n    : '))
+                break
+            except mode != 1 or mode != 2 or ValueError :
+                print "Enter a valid option \n"
         if mode == 1:
             mod = raw_input("What Caesar shift number would you like to use?  \n    : ")
             if mod.isdigit():
@@ -209,7 +230,7 @@ def start():
             elif mod == "all":
                 for n in range(0,25):
                     mod = n
-                    caesar_decrypt(mod)
+                    caesar_decipher(mod)
                     n+=1
         elif mode == 2:
             mod = raw_input("What Caesar shift multiple would you like to use?  \n    : ")
@@ -226,7 +247,7 @@ def start():
         print "Please enter either 1 or 2!"
         start()
     again()
-
+    
 import re
 
 alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
