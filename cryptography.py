@@ -11,12 +11,12 @@ def caesar_encrypt(plaintext,mod):      ## Cipher a plain text using basic Caesa
 
     upper = len(plaintext)
     newstring = ''
-    low = 0
+    low = 0 
     up = 1
     
     for l in range(0, upper):
-        if plaintext[low:up].isspace():
-            newstring += ' '
+        if plaintext[low:up] in " ,.?;:'!$%^&*()/":
+            newstring += plaintext[low:up]
         else:
             newstring += alphabet[crypt[alphabet.index(plaintext[low:up])]]
         low +=1
@@ -41,8 +41,8 @@ def caesar_multiply(plaintext,mod):     ## Cipher a plaintext using a Caesar Mul
     up = 1
     
     for l in range(0, upper):
-        if plaintext[low:up].isspace():
-            newstring += ' '
+        if plaintext[low:up] in " ,.?;:'!$%^&*()/":
+            newstring += plaintext[low:up]
         else:
             newstring += alphabet[crypt[alphabet.index(plaintext[low:up])]]
         low +=1
@@ -142,8 +142,8 @@ def caesar_decipher(cipher,mod):        ## Deciphers a ciphered message
     up = 1
     
     for l in range(0, upper):
-        if cipher[low:up].isspace():
-            newstring += ' '
+        if cipher[low:up] in " ,.?;:'!$%^&*()/":
+            newstring += cipher[low:up]
         else:
             newstring += alphabet[crypt[alphabet.index(cipher[low:up])]]
         low +=1
@@ -167,8 +167,8 @@ def caesar_multiply_decipher(cipher,mod): ## Decodes a ciphered multiply shift
     up = 1
     
     for l in range(0, upper):
-        if cipher[low:up].isspace():
-            newstring += ' '
+        if cipher[low:up] in " ,.?;:'!$%^&*()/":
+            newstring += cipher[low:up]
         else:
             newstring += alphabet[crypt[alphabet.index(cipher[low:up])]]
         low +=1
